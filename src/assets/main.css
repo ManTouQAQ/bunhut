@@ -1,0 +1,24 @@
+@import 'theme.css';
+@import 'common.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.2s, color 0.2s, border 0.2s;
+}
+body {
+    background-color: var(--primary-color);
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('@/assets/imgs/bright-squares.png');
+    background-repeat: repeat;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: -1;
+}
+::-webkit-scrollbar {
+    display: none;
+}
