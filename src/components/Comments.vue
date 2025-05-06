@@ -55,6 +55,8 @@ onBeforeUnmount(() => {
   }
 })
 
+const commentEditBox = ref()
+
 async function addComment() {
   const trimmedUsername = username.value.trim();
   if (trimmedUsername === "") {
@@ -66,6 +68,9 @@ async function addComment() {
     addPopupTip("评论内容不能为空喵 ;w;")
     return;
   }
+
+  commentEditBox.value.disabled = true
+
   const response = await fetch(`${API_BASE}/comments`, {
     method: "POST",
     headers: {
@@ -77,7 +82,11 @@ async function addComment() {
     })
   }).catch(() => {
     addPopupTip("评论发送失败喵 ;w;")
+  }).finally(() => {
+    commentEditBox.value.disabled = false
   });
+
+  commentEditBox.value.value = null
 
   const result = await response.json()
   if (result.code !== 200) {
@@ -109,7 +118,7 @@ const commentList = computed(() => {
           <span class="comment-edit-title">用户名:</span>
           <input class="comment-username-edit-box" v-model="username"/>
           <span class="comment-edit-title">内容:</span>
-          <input class="comment-content-edit-box" v-model="commentInput" @keyup.enter.prevent="addComment"/>
+          <input class="comment-content-edit-box" ref="commentEditBox" v-model="commentInput" @keyup.enter.prevent="addComment"/>
         </div>
       </div>
       <div class="comments-content">

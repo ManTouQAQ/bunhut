@@ -44,6 +44,13 @@ export const projects = [
         link: "https://github.com/ManTouQAQ/jvmti4j"
     },
     {
+        title: "BiliLevelSVGParser",
+        tags: ["Python"],
+        desc: "提取 B站 等级图标",
+        img: "https://blog.mantouqaq.fun:40202/upload/BiliLevelSVGParser.jpg",
+        link: "https://github.com/ManTouQAQ/BiliLevelSVGParser"
+    },
+    {
         title: "KoKo",
         tags: ["Kotlin", "Ktor"],
         desc: "半成品 KOOK 机器人 框架",
